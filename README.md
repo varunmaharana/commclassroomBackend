@@ -1,4 +1,4 @@
-# cc-backend
+# Community Classroom  Backend
 
 ## Thanks to all the contributors ❤️
 <a href = "https://github.com/commclassroom/commclassroomBackend/graphs/contributors">
