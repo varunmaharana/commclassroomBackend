@@ -1,41 +1,68 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-require('mongoose-type-email');
 
 /**
  * Define the structure of Course document here
  */
-
-const courseSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  instructors: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  },
-  assistants: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  },
-  students: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  },
-  likes: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  },
-  reviews: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-  },
-  faq: {
-    type: [
+const courseSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    category: String,
+    instructors: [
       {
-        question: String,
-        answer: String,
-        author: { type: Schema.Types.ObjectId, ref: 'User' },
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    assistants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    students: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
+    faq: [
+      {
+        question: {
+          type: String,
+          required: true,
+        },
+        answer: {
+          type: String,
+          required: true,
+        },
+        author: {
+          type: Schema.Types.ObjectId,
+          ref: 'Review',
+        },
       },
     ],
   },
-});
+  {
+    timestamps: true,
+  },
+);
 
 module.exports = mongoose.model('Course', courseSchema);
