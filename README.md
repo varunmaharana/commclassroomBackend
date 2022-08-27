@@ -6,7 +6,7 @@ A backend project for the CommClassroom Website.
 
 ## Requirements
 
-For development, you will only need Node.js and npm, installed in your environement.
+For development, you will only need Node.js and npm, installed in your environment.
 
 ## Useful commands
 
